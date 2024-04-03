@@ -1,0 +1,25 @@
+.floatIcon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensures the icon appears above other content */
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.floatIconOpen {
+  color: #ffffff;
+  background-color: #002964;
+}
+
+.floatIconClose {
+  background-color: #fff;
+}

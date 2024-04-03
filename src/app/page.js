@@ -1,95 +1,65 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import classNames from 'classnames';
+import styles from './page.module.css';
+import CreateTask from './components/CreateTask';
+import TaskList from './components/TaskList';
+import FloatingIcon from './components/FloatingIcon';
+import useWindowSize from './hooks/useWindowSize';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
-export default function Home() {
+const variants = {
+  open: {
+    clipPath: 'circle(1200px at calc(100% - 50px) calc(100% - 50px))',
+    transition: {
+      type: 'spring',
+      stiffness: 20,
+      duration: 1,
+    },
+  },
+  closed: {
+    clipPath: 'circle(0px at calc(100% - 50px) calc(100% - 50px))',
+    transition: {
+      type: 'spring',
+      stiffness: 20,
+      duration: 1,
+    },
+  },
+};
+
+const Home = () => {
+  const { width, height } = useWindowSize();
+  const [openForm, setOpenForm] = useState(false);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className={classNames(styles['container'])}>
+      <section className={classNames(styles['add-task-container'], [styles['inner-container']])}>
+        <div className={styles.createTaskContainer}>
+          <CreateTask modal={openForm} />
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      </section>
+      <section className={styles['inner-container']}>
+        <TaskList />
+      </section>
+      {width <= 750 && (
+        <FloatingIcon
+          onClick={() => {
+            setOpenForm(!openForm);
+          }}
+          closeIcon={openForm}
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      )}
+      <motion.div
+        className={styles.formModalContainer}
+        animate={openForm ? 'open' : 'closed'}
+        initial={'closed'}
+      >
+        <motion.div className={styles.formModalInnerContainer} variants={variants}>
+          <CreateTask />
+        </motion.div>
+      </motion.div>
     </main>
   );
-}
+};
+
+export default Home;
