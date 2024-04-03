@@ -3,7 +3,7 @@
   gap: 10px;
 }
 
-.pill-container {
+.pillContainer {
   border: 1px solid #002964;
   color: #002964;
   width: 101px;
@@ -12,6 +12,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.activePill {
+  background-color: #002964;
+  color: #fff;
 }
 
 .listItemsContainer {

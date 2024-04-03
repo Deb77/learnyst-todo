@@ -1,11 +1,15 @@
-import { Component } from 'react';
+import classNames from 'classnames';
 import styles from '../taskList.module.css';
 
-export class Pill extends Component {
-  render() {
-    const { active, text } = this.props;
-    return <div className={styles['pill-container']}>{text}</div>;
-  }
-}
+const Pill = ({ active, title, setActiveView }) => {
+  return (
+    <div
+      className={classNames({ [styles.pillContainer]: true, [styles.activePill]: active })}
+      onClick={() => setActiveView(title)}
+    >
+      {title}
+    </div>
+  );
+};
 
 export default Pill;

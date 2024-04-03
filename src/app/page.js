@@ -13,16 +13,14 @@ const variants = {
     clipPath: 'circle(1200px at calc(100% - 50px) calc(100% - 50px))',
     transition: {
       type: 'spring',
-      stiffness: 20,
-      duration: 1,
+      stiffness: 25,
     },
   },
   closed: {
     clipPath: 'circle(0px at calc(100% - 50px) calc(100% - 50px))',
     transition: {
       type: 'spring',
-      stiffness: 20,
-      duration: 1,
+      stiffness: 25,
     },
   },
 };
