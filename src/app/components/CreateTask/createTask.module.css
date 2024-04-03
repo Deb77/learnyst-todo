@@ -2,7 +2,7 @@
   min-width: 75%;
 }
 
-.full-width {
+.fullWidth {
   width: 100%;
 }
 
@@ -20,7 +20,7 @@
   display: block;
 }
 
-.text-field {
+.textField {
   font-size: 1rem;
   padding: 16px;
   border: 1px solid #e3e5e5;
@@ -29,14 +29,14 @@
   box-sizing: border-box;
 }
 
-.text-field::placeholder {
+.textField::placeholder {
   font-family: var(--font-poppins);
   font-size: 16px;
   font-weight: 400;
   color: #b3b3b3;
 }
 
-.text-area {
+.textArea {
   font-family: var(--font-poppins);
   font-size: 16px;
   padding: 16px;
@@ -48,14 +48,14 @@
   height: 200px;
 }
 
-.text-area::placeholder {
+.textArea::placeholder {
   font-size: 16px;
   font-weight: 400;
   color: #b3b3b3;
   letter-spacing: 0;
 }
 
-.add-task-btn {
+.addTaskBtn {
   font-size: 14px;
   font-weight: 600;
   color: #fff;
