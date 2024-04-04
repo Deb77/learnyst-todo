@@ -1,0 +1,168 @@
+.darkBG {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  padding: 20px;
+  min-width: 500px;
+  min-height: 200px;
+  background: white;
+  color: white;
+  z-index: 10;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+.modalHeader {
+  height: 50px;
+  background: white;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.heading {
+  margin: 0;
+
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+
+.modalContent {
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.modalActions {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.actionsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  align-items: center;
+}
+
+.closeBtn {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  color: #2c3e50;
+  background: white;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
+  position: absolute;
+  right: 0;
+  top: 0;
+  align-self: flex-end;
+  margin-top: 7px;
+  margin-right: 7px;
+}
+
+.saveBtn {
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 11px 28px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  background: #c1e1c1;
+  transition: all 0.25s ease;
+}
+
+.cancelBtn {
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 11px 28px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: #2c3e50;
+  background: #d3d3d3;
+  transition: all 0.25s ease;
+}
+
+.cancelBtn:hover {
+  box-shadow: none;
+  transform: none;
+  background: whitesmoke;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.textField {
+  font-size: 1rem;
+  padding: 16px;
+  border: 1px solid #e3e5e5;
+  font-family: var(--font-poppins);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.textField::placeholder {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  font-weight: 400;
+  color: #b3b3b3;
+}
+
+.textArea {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  padding: 16px;
+  border: 1px solid #e3e5e5;
+  border-radius: 8px;
+  box-sizing: border-box;
+  resize: none;
+  font-family: var(--font-poppins);
+  height: 200px;
+}
+
+.textArea::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #b3b3b3;
+  letter-spacing: 0;
+}
+
+@media (max-width: 750px) and (min-width: 550px) {
+  .modal {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 550px) {
+  .modal {
+    min-width: 250px;
+  }
+  .saveBtn {
+    height: 50px;
+  }
+  .cancelBtn {
+    height: 50px;
+  }
+}

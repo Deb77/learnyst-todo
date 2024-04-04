@@ -80,7 +80,7 @@ const TaskList = ({ setUseScrollView }) => {
               alignItems: 'center',
             }}
           >
-            <Image src={emptyListConfig.image} height={200} width={200} />
+            <Image src={emptyListConfig.image} height={200} width={200} alt='emptyImage' />
             <Spacer height={20} />
             <p style={{ color: '#b3b3b3', fontSize: 16, textAlign: 'center' }}>
               {emptyListConfig.message}

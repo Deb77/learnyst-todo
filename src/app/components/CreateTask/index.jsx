@@ -80,7 +80,7 @@ class CreateTask extends Component {
         <button className={classNames(styles.fullWidth, styles.addTaskBtn)}>Add Task</button>
         <SnackBar
           message={'Task Added To List'}
-          isActive={this.state.openSnackbar}
+          isActive={this.state.openSnackbar && this.props.screenWidth}
           setIsActive={(val) => this.setState({ ...this.state, openSnackbar: val })}
         />
       </form>

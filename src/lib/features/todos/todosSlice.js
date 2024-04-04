@@ -2,22 +2,38 @@ import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 export const todosSlice = createSlice({
   name: 'todos',
-  initialState: [],
+  initialState: { todos: [] },
   reducers: {
     addTodo: (state, action) => {
-      state.push(action.payload);
+      state.todos.push(action.payload);
     },
     toggleCompleteTodo: (state, action) => {
       const id = action.payload;
-      const index = state.findIndex((item) => item.id === id);
+      const todos = state.todos;
+      const index = todos.findIndex((item) => item.id === id);
       if (index !== -1) {
-        state[index] = { ...state[index], completed: !state[index].completed };
+        todos[index] = { ...todos[index], completed: !todos[index].completed };
       }
+    },
+    updateTodo: (state, action) => {
+      const { id, title, description } = action.payload;
+      const todos = state.todos;
+      const index = todos.findIndex((item) => item.id === id);
+      console.log(index !== -1);
+      if (index !== -1) {
+        console.log({ ...todos[index], title, description });
+        todos[index] = { ...todos[index], title, description };
+      }
+    },
+    deleteTodo: (state, action) => {
+      const id = action.payload;
+      const todos = state.todos;
+      state.todos = todos.filter((todo) => todo.id !== id);
     },
   },
 });
 
-export const { addTodo, toggleCompleteTodo, incrementByAmount } = todosSlice.actions;
+export const { addTodo, toggleCompleteTodo, updateTodo, deleteTodo } = todosSlice.actions;
 
 export const getCompletedTodos = createSelector(
   (state) => state.todos,
