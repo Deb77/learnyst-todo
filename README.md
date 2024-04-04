@@ -99,8 +99,10 @@ This is an example of how to list things you need to use the software and how to
 
 ![homepageWithTodo](./screenshots/homepageEdit.png)
 
-### Create Todo Mobile
-
-![homepageWithTodo](./screenshots/addTodoMobile.png)
+### Mobile View
+<p float="left">
+  <img src="./screenshots/addTodoMobile.png" width="300" />
+  <img src="./screenshots/todoListMobile.png" width="300" /> 
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
