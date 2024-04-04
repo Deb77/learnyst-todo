@@ -7,7 +7,7 @@ import Spacer from "../common/Spacer";
 import SnackBar from "../common/SnackBar";
 import TextField from "../common/TextField";
 import TextArea from "../common/TextArea";
-import { addTodo } from "../../../lib/features/todos/todosSlice";
+import { addTodo } from "@/lib/features/todos/todosSlice";
 
 import pageStyles from "../../page.module.css";
 import styles from "./createTask.module.css";

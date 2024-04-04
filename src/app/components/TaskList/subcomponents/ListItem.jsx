@@ -3,16 +3,16 @@ import { useDispatch } from "react-redux";
 import Image from "next/image";
 import classNames from "classnames";
 
-import Modal from "../../common/Modal";
+import Modal from "./Modal";
 import Spacer from "../../common/Spacer";
-import { toggleCompleteTodo, deleteTodo } from "../../../../lib/features/todos/todosSlice";
-
-import openIcon from "../../../../../public/openIcon.png";
-import closeIcon from "../../../../../public/closeIcon.png";
-import pencilIcon from "../../../../../public/pencil.png";
-import deleteIcon from "../../../../../public/delete.png";
+import { toggleCompleteTodo, deleteTodo } from "@/lib/features/todos/todosSlice";
 
 import styles from "../taskList.module.css";
+
+const openIcon = "/openIcon.png";
+const closeIcon = "/closeIcon.png";
+const pencilIcon = "/pencil.png";
+const deleteIcon = "/delete.png";
 
 const ListItem = ({ title, description, completed, id }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,7 @@ const ListItem = ({ title, description, completed, id }) => {
         <div className={styles.iconsContainer}>
           <Image height={15} width={15} src={pencilIcon} alt="accordian-icon-pencil" unoptimized={true} className={styles.icon} onClick={editTodo} />
           <Image height={15} width={15} src={deleteIcon} alt="accordian-icon-delete" unoptimized={true} className={styles.icon} onClick={deleteTodoFromList} />
-          <Image src={isOpen ? closeIcon : openIcon} alt="accordian-icon-toggle" unoptimized={true} />
+          <Image height={7} width={14} src={isOpen ? closeIcon : openIcon} alt="accordian-icon-toggle" unoptimized={true} />
         </div>
       </div>
       {isOpen && (

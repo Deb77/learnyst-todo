@@ -49,8 +49,18 @@
   width: 100%;
 }
 
+.openModalForm {
+  clip-path: circle(0px at calc(100% - 50px) calc(100% - 50px));
+  transition: clip-path 1s ease-in;
+}
+
+.closeModalForm {
+  clip-path: circle(1200px at calc(100% - 50px) calc(100% - 50px));
+  transition: clip-path 1s ease-out;
+}
+
 @media (min-width: 750px) and (max-width: 800px) {
-  .inner-container {
+  .innerContainer {
     padding: calc(100vh * 0.05);
   }
 }

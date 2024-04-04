@@ -5,13 +5,13 @@ import Image from "next/image";
 import Pill from "./subcomponents/Pill";
 import ListItem from "./subcomponents/ListItem";
 import Spacer from "../common/Spacer";
-import { getPendingTodos, getCompletedTodos } from "../../../lib/features/todos/todosSlice";
-
-import EmptyList from "../../../../public/emptyList.svg";
-import CompleteList from "../../../../public/completeList.svg";
+import { getPendingTodos, getCompletedTodos } from "@/lib/features/todos/todosSlice";
 
 import pageStyles from "../../page.module.css";
 import styles from "./taskList.module.css";
+
+const emptyImage = "/emptyList.svg";
+const completeImage = "/completeList.svg";
 
 const TaskList = ({ setUseScrollView }) => {
   const allTodos = useSelector((state) => state.todos);
@@ -24,15 +24,15 @@ const TaskList = ({ setUseScrollView }) => {
 
   const getTodosStatus = () => {
     if (activeView === "All" && allTodos.length === 0) {
-      return { image: EmptyList, message: "No todos have been added to the list..." };
+      return { image: emptyImage, message: "No todos have been added to the list..." };
     } else if (activeView === "Done" && allTodos.length === 0) {
-      return { image: EmptyList, message: "No todos have been added to the list..." };
+      return { image: emptyImage, message: "No todos have been added to the list..." };
     } else if (activeView === "Done" && pendingTodos.length > 0 && completedTodos.length === 0) {
-      return { image: EmptyList, message: "None of the todos have been completed" };
+      return { image: emptyImage, message: "None of the todos have been completed" };
     } else if (activeView === "To Do" && allTodos.length > 0 && pendingTodos.length === 0) {
-      return { image: CompleteList, message: "Yay!! You've completed all the items in the list" };
+      return { image: completeImage, message: "Yay!! You've completed all the items in the list" };
     } else if (activeView === "To Do" && allTodos.length === 0) {
-      return { image: EmptyList, message: "No todos have been added to the list..." };
+      return { image: emptyImage, message: "No todos have been added to the list..." };
     } else {
       return {};
     }

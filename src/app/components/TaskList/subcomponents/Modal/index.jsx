@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import Image from "next/image";
 import classNames from "classnames";
 
-import { updateTodo } from "../../../../lib/features/todos/todosSlice";
+import Spacer from "../../../common/Spacer";
+import TextField from "../../../common/TextField";
+import TextArea from "../../../common/TextArea";
+import { updateTodo } from "@/lib/features/todos/todosSlice";
 
-import Spacer from "../Spacer";
-
-import closeIcon from "../../../../../public/close.png";
 import styles from "./Modal.module.css";
-import TextField from "../TextField";
-import TextArea from "../TextArea";
+
+const closeIcon = "/close.png";
 
 const Modal = ({ setIsOpen, title, description, id }) => {
   const dispatch = useDispatch();
