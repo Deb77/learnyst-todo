@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, startTransition } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { v4 } from 'uuid';
@@ -8,11 +8,14 @@ import { addTodo } from '../../../lib/features/todos/todosSlice';
 
 import pageStyles from '../../page.module.css';
 import styles from './createTask.module.css';
+import SnackBar from '../common/SnackBar';
 
 class CreateTask extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', description: '' };
+    this.state = { title: '', description: '', openSnackbar: false, error: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
@@ -21,8 +24,24 @@ class CreateTask extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ title: '', description: '' });
-    this.props.addTodo({ ...this.state, completed: false, id: v4() });
+    const titleEmpty = this.state.title === '',
+      descriptionEmpty = this.state.description === '';
+
+    if (titleEmpty || descriptionEmpty) {
+      this.setState({
+        error:
+          (titleEmpty && 'Title cannot be left empty') ||
+          (descriptionEmpty && 'Description cannot be left empty'),
+      });
+    } else {
+      this.setState({ title: '', description: '', openSnackbar: true, error: '' });
+      this.props.addTodo({
+        title: this.state.title,
+        description: this.state.description,
+        completed: false,
+        id: v4(),
+      });
+    }
   };
 
   render() {
@@ -39,7 +58,7 @@ class CreateTask extends Component {
           value={this.state.title}
           onChange={this.handleChange}
           className={classNames(styles.fullWidth, styles.textField)}
-          placeholder='Enter task description'
+          placeholder='Enter task title'
         ></input>
         <Spacer height={15} />
         <label className={classNames(styles.fullWidth, styles.label)}>Task Description</label>
@@ -51,8 +70,19 @@ class CreateTask extends Component {
           className={classNames(styles.fullWidth, styles.textArea)}
           placeholder='Enter task description'
         ></textarea>
-        <Spacer height={60} />
+        <Spacer height={40} />
+        <div className={styles.errorContainer}>
+          <div className={classNames({ [styles.error]: !!this.state.error })}>
+            {this.state.error}
+          </div>
+        </div>
+        <Spacer height={20} />
         <button className={classNames(styles.fullWidth, styles.addTaskBtn)}>Add Task</button>
+        <SnackBar
+          message={'Task Added To List'}
+          isActive={this.state.openSnackbar}
+          setIsActive={(val) => this.setState({ ...this.state, openSnackbar: val })}
+        />
       </form>
     );
   }

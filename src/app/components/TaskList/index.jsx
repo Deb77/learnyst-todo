@@ -10,7 +10,7 @@ import Image from 'next/image';
 import EmptyList from '../../../../public/emptyList.svg';
 import CompleteList from '../../../../public/completeList.svg';
 
-const TaskList = () => {
+const TaskList = ({ setUseScrollView }) => {
   const allTodos = useSelector((state) => state.todos);
   const pendingTodos = useSelector(getPendingTodos);
   const completedTodos = useSelector(getCompletedTodos);
@@ -41,6 +41,10 @@ const TaskList = () => {
       setEmptyListConfig({ empty: true, image, message });
     } else {
       setEmptyListConfig({ empty: false });
+    }
+
+    if (allTodos.length > 0) {
+      setUseScrollView(true);
     }
   }, [activeView, allTodos]);
 

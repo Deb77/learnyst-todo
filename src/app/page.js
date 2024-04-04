@@ -26,18 +26,21 @@ const variants = {
 };
 
 const Home = () => {
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
   const [openForm, setOpenForm] = useState(false);
+  const [useScrollView, setUseScrollView] = useState(false);
 
   return (
-    <main className={classNames(styles['container'])}>
+    <main
+      className={classNames({ [styles.container]: true, [styles.containerScroll]: useScrollView })}
+    >
       <section className={classNames(styles['add-task-container'], [styles['inner-container']])}>
         <div className={styles.createTaskContainer}>
-          <CreateTask modal={openForm} />
+          <CreateTask modal={openForm} screenWidth={width} />
         </div>
       </section>
       <section className={styles['inner-container']}>
-        <TaskList />
+        <TaskList setUseScrollView={setUseScrollView} />
       </section>
       {width <= 750 && (
         <FloatingIcon
@@ -53,7 +56,7 @@ const Home = () => {
         initial={'closed'}
       >
         <motion.div className={styles.formModalInnerContainer} variants={variants}>
-          <CreateTask />
+          <CreateTask modal={openForm} screenWidth={width} />
         </motion.div>
       </motion.div>
     </main>

@@ -53,8 +53,11 @@
 
 @media (max-width: 750px) {
   .container {
-    grid-template-columns: 0fr 1.75fr;
-    overflow: auto;
+    grid-template-columns: 0fr 1fr;
+  }
+
+  .containerScroll {
+    overflow-y: auto;
   }
 
   .createTaskContainer {

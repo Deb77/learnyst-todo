@@ -43,7 +43,7 @@ const ListItem = ({ title, description, completed, id }) => {
             {title}
           </p>
         </div>
-        <Image src={isOpen ? closeIcon : openIcon} alt='accordian-icon' />
+        <Image src={isOpen ? closeIcon : openIcon} alt='accordian-icon' unoptimized={true} />
       </div>
 
       {isOpen && (
