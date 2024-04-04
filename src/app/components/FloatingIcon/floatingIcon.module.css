@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000; /* Ensures the icon appears above other content */
+  z-index: 1000;
   border-radius: 50%;
   height: 50px;
   width: 50px;

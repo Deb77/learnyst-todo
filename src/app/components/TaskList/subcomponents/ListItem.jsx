@@ -1,18 +1,18 @@
-import { Component, useState } from 'react';
-import Image from 'next/image';
-import classNames from 'classnames';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import Image from "next/image";
+import classNames from "classnames";
 
-import openIcon from '../../../../../public/openIcon.png';
-import closeIcon from '../../../../../public/closeIcon.png';
-import pencilIcon from '../../../../../public/pencil.png';
-import deleteIcon from '../../../../../public/delete.png';
-import Modal from '../../common/Modal';
+import Modal from "../../common/Modal";
+import Spacer from "../../common/Spacer";
+import { toggleCompleteTodo, deleteTodo } from "../../../../lib/features/todos/todosSlice";
 
-import { toggleCompleteTodo, deleteTodo } from '../../../../lib/features/todos/todosSlice';
+import openIcon from "../../../../../public/openIcon.png";
+import closeIcon from "../../../../../public/closeIcon.png";
+import pencilIcon from "../../../../../public/pencil.png";
+import deleteIcon from "../../../../../public/delete.png";
 
-import styles from '../taskList.module.css';
-import Spacer from '../../common/Spacer';
-import { useDispatch } from 'react-redux';
+import styles from "../taskList.module.css";
 
 const ListItem = ({ title, description, completed, id }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,8 @@ const ListItem = ({ title, description, completed, id }) => {
     dispatch(toggleCompleteTodo(id));
   };
 
-  const deleteTodoFromList = () => {
+  const deleteTodoFromList = (e) => {
+    e.stopPropagation();
     dispatch(deleteTodo(id));
   };
 
@@ -32,65 +33,31 @@ const ListItem = ({ title, description, completed, id }) => {
     setIsOpen(!isOpen);
   };
 
+  const editTodo = (e) => {
+    e.stopPropagation();
+    setOpenEditModal(true);
+  };
+
   return (
     <div className={styles.listItemContainer} onClick={handleOpen}>
       <div className={styles.listItemInnerContainer}>
         <div className={styles.listItemInnerContainer}>
-          <input
-            type='checkbox'
-            checked={completed}
-            className={styles.checkbox}
-            onClick={(e) => e.stopPropagation()}
-            onChange={markTaskComplete}
-          />
-          <p
-            className={classNames({
-              [styles.listItemTitle]: !completed,
-              [styles.listItemTitleCompleted]: completed,
-            })}
-          >
-            {title}
-          </p>
+          <input type="checkbox" checked={completed} className={styles.checkbox} onClick={(e) => e.stopPropagation()} onChange={markTaskComplete} />
+          <p className={classNames({ [styles.listItemTitle]: !completed, [styles.listItemTitleCompleted]: completed })}>{title}</p>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
-          <Image
-            height={15}
-            width={15}
-            src={pencilIcon}
-            alt='accordian-icon'
-            unoptimized={true}
-            style={{ cursor: 'pointer' }}
-            onClick={(e) => {
-              e.stopPropagation();
-              setOpenEditModal(true);
-            }}
-          />
-          <Image
-            height={15}
-            width={15}
-            src={deleteIcon}
-            alt='accordian-icon'
-            unoptimized={true}
-            style={{ cursor: 'pointer' }}
-            onClick={(e) => {
-              deleteTodo(id);
-              deleteTodoFromList();
-            }}
-          />
-          <Image src={isOpen ? closeIcon : openIcon} alt='accordian-icon' unoptimized={true} />
+        <div className={styles.iconsContainer}>
+          <Image height={15} width={15} src={pencilIcon} alt="accordian-icon-pencil" unoptimized={true} className={styles.icon} onClick={editTodo} />
+          <Image height={15} width={15} src={deleteIcon} alt="accordian-icon-delete" unoptimized={true} className={styles.icon} onClick={deleteTodoFromList} />
+          <Image src={isOpen ? closeIcon : openIcon} alt="accordian-icon-toggle" unoptimized={true} />
         </div>
       </div>
-
       {isOpen && (
         <div className={styles.listItemDescriptionContainer}>
           <Spacer height={10} />
           <p className={styles.listItemDescription}>{description}</p>
         </div>
       )}
-
-      {openEditModal && (
-        <Modal setIsOpen={setOpenEditModal} title={title} description={description} id={id} />
-      )}
+      {openEditModal && <Modal setIsOpen={setOpenEditModal} title={title} description={description} id={id} />}
     </div>
   );
 };

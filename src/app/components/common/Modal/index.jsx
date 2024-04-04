@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import styles from './Modal.module.css';
-import Image from 'next/image';
-import closeIcon from '../../../../../public/close.png';
-import classNames from 'classnames';
-import Spacer from '../Spacer';
-import { updateTodo } from '@/lib/features/todos/todosSlice';
-import { useDispatch } from 'react-redux';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import Image from "next/image";
+import classNames from "classnames";
+
+import { updateTodo } from "../../../../lib/features/todos/todosSlice";
+
+import Spacer from "../Spacer";
+
+import closeIcon from "../../../../../public/close.png";
+import styles from "./Modal.module.css";
+import TextField from "../TextField";
+import TextArea from "../TextArea";
 
 const Modal = ({ setIsOpen, title, description, id }) => {
+  const dispatch = useDispatch();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
-  const dispatch = useDispatch();
 
   const saveChanges = () => {
     if (newTitle !== title || newDescription !== description) {
@@ -28,31 +33,16 @@ const Modal = ({ setIsOpen, title, description, id }) => {
             <h5 className={styles.heading}>Edit Your List Item</h5>
           </div>
           <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
-            <Image src={closeIcon} unoptimized={true} height={15} width={15} alt='Close' />
+            <Image src={closeIcon} unoptimized={true} height={15} width={15} alt="Close" />
           </button>
           <div className={styles.modalContent}>
             <label className={classNames(styles.fullWidth, styles.label)}>Edit Task Title</label>
             <Spacer height={15} />
-            <input
-              name='title'
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              className={classNames(styles.fullWidth, styles.textField)}
-              placeholder='Enter task title'
-            ></input>
-
+            <TextField name="title" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="Enter task title" />
             <Spacer height={15} />
-            <label className={classNames(styles.fullWidth, styles.label)}>
-              Edit Task Description
-            </label>
+            <label className={classNames(styles.fullWidth, styles.label)}>Edit Task Description</label>
             <Spacer height={15} />
-            <textarea
-              name='description'
-              value={newDescription}
-              onChange={(e) => setNewDescription(e.target.value)}
-              className={classNames(styles.fullWidth, styles.textArea)}
-              placeholder='Enter task description'
-            ></textarea>
+            <TextArea name="description" value={newDescription} onChange={(e) => setNewDescription(e.target.value)} placeholder="Enter task description" />
             <Spacer height={40} />
           </div>
           <div className={styles.modalActions}>

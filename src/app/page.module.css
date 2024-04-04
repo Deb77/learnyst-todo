@@ -5,11 +5,11 @@
   grid-template-columns: 1fr 1.5fr;
 }
 
-.add-task-container {
+.addTaskContainer {
   background-color: #e8f2ff;
 }
 
-.inner-container {
+.innerContainer {
   height: 100%;
   padding: calc(100vh * 0.1) 10%;
 }
@@ -43,6 +43,10 @@
   bottom: 0;
   width: 100%;
   background-color: #e8f2ff;
+}
+
+.fullWidth {
+  width: 100%;
 }
 
 @media (min-width: 750px) and (max-width: 800px) {

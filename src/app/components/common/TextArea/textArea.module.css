@@ -1,0 +1,18 @@
+.textArea {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  padding: 16px;
+  border: 1px solid #e3e5e5;
+  border-radius: 8px;
+  box-sizing: border-box;
+  resize: none;
+  font-family: var(--font-poppins);
+  height: 200px;
+}
+
+.textArea::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #b3b3b3;
+  letter-spacing: 0;
+}

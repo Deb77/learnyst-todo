@@ -20,41 +20,6 @@
   display: block;
 }
 
-.textField {
-  font-size: 1rem;
-  padding: 16px;
-  border: 1px solid #e3e5e5;
-  font-family: var(--font-poppins);
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-.textField::placeholder {
-  font-family: var(--font-poppins);
-  font-size: 16px;
-  font-weight: 400;
-  color: #b3b3b3;
-}
-
-.textArea {
-  font-family: var(--font-poppins);
-  font-size: 16px;
-  padding: 16px;
-  border: 1px solid #e3e5e5;
-  border-radius: 8px;
-  box-sizing: border-box;
-  resize: none;
-  font-family: var(--font-poppins);
-  height: 200px;
-}
-
-.textArea::placeholder {
-  font-size: 16px;
-  font-weight: 400;
-  color: #b3b3b3;
-  letter-spacing: 0;
-}
-
 .addTaskBtn {
   font-size: 14px;
   font-weight: 600;

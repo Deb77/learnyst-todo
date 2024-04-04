@@ -1,7 +1,7 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 export const todosSlice = createSlice({
-  name: 'todos',
+  name: "todos",
   initialState: { todos: [] },
   reducers: {
     addTodo: (state, action) => {
