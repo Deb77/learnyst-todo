@@ -46,8 +46,10 @@ const TaskList = ({ setUseScrollView }) => {
       setEmptyListConfig({ empty: false });
     }
 
-    if (allTodos.length > 0) {
+    if ((activeView === "All" && allTodos.length > 0) || (activeView === "Done" && completedTodos.length > 0) || (activeView === "To Do" && pendingTodos.length > 0)) {
       setUseScrollView(true);
+    } else {
+      setUseScrollView(false);
     }
   }, [activeView, allTodos]);
 
