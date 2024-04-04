@@ -19,9 +19,7 @@ export const todosSlice = createSlice({
       const { id, title, description } = action.payload;
       const todos = state.todos;
       const index = todos.findIndex((item) => item.id === id);
-      console.log(index !== -1);
       if (index !== -1) {
-        console.log({ ...todos[index], title, description });
         todos[index] = { ...todos[index], title, description };
       }
     },

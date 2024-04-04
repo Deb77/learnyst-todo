@@ -24,8 +24,8 @@ class CreateTask extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const titleEmpty = this.state.title === '',
-      descriptionEmpty = this.state.description === '';
+    const titleEmpty = this.state.title.trim() === '',
+      descriptionEmpty = this.state.description.trim() === '';
 
     if (titleEmpty || descriptionEmpty) {
       this.setState({
@@ -80,7 +80,7 @@ class CreateTask extends Component {
         <button className={classNames(styles.fullWidth, styles.addTaskBtn)}>Add Task</button>
         <SnackBar
           message={'Task Added To List'}
-          isActive={this.state.openSnackbar && this.props.screenWidth}
+          isActive={this.state.openSnackbar && this.props.screenWidth <= 750}
           setIsActive={(val) => this.setState({ ...this.state, openSnackbar: val })}
         />
       </form>
