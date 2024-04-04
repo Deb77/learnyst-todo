@@ -99,6 +99,8 @@ This is an example of how to list things you need to use the software and how to
 
 ![homepageWithTodo](./screenshots/homepageEdit.png)
 
+## Getting Started
+
 ### Mobile View
 <p float="left">
   <img src="./screenshots/addTodoMobile.png" width="300" />
