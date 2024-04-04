@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a name="readme-top"></a>
 
-## Getting Started
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h3 align="center">Learnyst Todo Application</h3>
 
-First, run the development server:
+  <p align="center">
+   A thoughtfully engineered platform, designed with user-friendly features, to assist you in efficiently managing and tracking all your daily tasks, goals, and aspirations, ensuring you maintain a clear focus on your priorities.
+    <br />
+    <a href="https://github.com/Deb77/learnyst-todo"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://learnyst-todo.pages.dev/">View Demo</a>
+    ·
+    <a href="https://github.com/Deb77/learnyst-todo/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    ·
+    <a href="https://github.com/Deb77/learnyst-todo/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+  </ol>
+</details>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<!-- ABOUT THE PROJECT -->
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## About The Project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![homepage](./screenshots//homepage.png)
 
-## Learn More
+Introducing a user-friendly Todo List - your go-to companion for managing tasks effortlessly. From jotting down quick reminders to organizing comprehensive projects, our straightforward interface ensures seamless navigation across all your devices. Stay organized, prioritize tasks, and experience the satisfaction of ticking off completed items. Simplify your life and boost productivity with our Todo List today.
 
-To learn more about Next.js, take a look at the following resources:
+### Built With
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js
+- React.js
+- Redux Toolkit
+- Redux Persist
+- Classnames
+- Pure CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Prerequisites
 
-## Deploy on Vercel
+This is an example of how to list things you need to use the software and how to install them.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- node
+  ```
+  v>=18.0.0
+  ```
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Deb77/learnyst-todo
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. To run the project
+   ```sh
+    npm run dev
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+### Homepage
+
+![homepageWithTodo](./screenshots/hompageWithTodo.png)
+
+### Edit Todo
+
+![homepageWithTodo](./screenshots/homepageEdit.png)
+
+### Create Todo Mobile
+
+![homepageWithTodo](./screenshots/addTodoMobile.png)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
